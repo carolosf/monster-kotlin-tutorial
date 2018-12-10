@@ -1,0 +1,63 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.3.11'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    jcenter()
+    mavenCentral()
+    maven {
+        url "https://dl.bintray.com/kotlin/exposed"
+    }
+}
+
+dependencies {
+    ext.kotlin_version = '1.3.11'
+    ext.ktor_version = '1.0.1'
+
+    // https://kotlinlang.org/docs/reference/using-gradle.html
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect"
+
+    // http://makble.com/gradle-slf4j-integration-example-with-eclipse
+    compile "org.slf4j:slf4j-api:1.7.25"
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+    compile 'ch.qos.logback:logback-core:1.2.3'
+
+    // https://github.com/JetBrains/Exposed
+    // https://bintray.com/kotlin/exposed/exposed/view#
+    compile 'org.jetbrains.exposed:exposed:0.11.2'
+
+    // https://ktor.io/quickstart/quickstart/gradle.html
+    compile "io.ktor:ktor-server-core:$ktor_version"
+
+    compile "io.ktor:ktor-server-netty:$ktor_version"
+
+    compile "io.ktor:ktor-auth-jwt:$ktor_version"
+    compile "io.ktor:ktor-auth:$ktor_version"
+    compile "io.ktor:ktor-jackson:$ktor_version"
+
+    // Consider using this only in test
+    compile 'com.h2database:h2:1.4.197'
+
+    // serialization for json and date times
+    compile 'com.fasterxml.jackson.core:jackson-core:2.9.6'
+    compile 'com.fasterxml.jackson.datatype:jackson-datatype-joda:2.9.6'
+    compile 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.6'
+
+    // https://github.com/kohesive/klutter
+    compile "uy.kohesive.klutter:klutter-config-typesafe:2.6.0"
+
+    testCompile "org.jetbrains.kotlin:kotlin-test"
+    testCompile "org.jetbrains.kotlin:kotlin-test-junit"
+    testCompile 'com.h2database:h2:1.4.197'
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = "1.8"
+}

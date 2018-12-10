@@ -1,0 +1,5 @@
+### You can run this from IntelliJ instead of using PostMan/Web Browser
+
+GET localhost:8080/monster/abc
+
+###
